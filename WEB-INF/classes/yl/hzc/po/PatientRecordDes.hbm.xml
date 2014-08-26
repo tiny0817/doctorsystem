@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping 
+			PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="yl.hzc.po.PatientRecordDes" table="tbl_recorddes"><!-- 每个class对应一个持久化对象 -->
+		<id name="id" column="id"><!-- id元素用来定义主键标识,并指定主键生成策略 -->
+			<generator class="native"></generator>
+		</id>
+		<property name="patientId" column="patientid"></property>
+		<property name="recordDate" column="recorddate"></property>
+		<property name="recordPage" column="recordpage"></property>
+		<property name="recordNum" column="recordnum"></property>
+		<property name="recordDes" column="recorddes"></property>
+	</class>	
+</hibernate-mapping>

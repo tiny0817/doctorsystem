@@ -1,0 +1,91 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="js/jquery-1.9.1.js" type="text/javascript"></script>
+
+<style type="text/css">
+#t{ margin:30px 0 0 100px;}
+.cc {
+	border:1px solid #000;
+	position:absolute;
+	top:60px;
+	left:180px;
+	height: 150px;
+	width: 300px;
+	display:none;
+}
+.cc h2{ display:block; width:270px; font-size:12px; float:left; text-align:center;}
+.cc span{ display:block; width:20px; height:20px; font-size:18px; float:right; border:1px solid #F00; background:#999; text-align:center;}
+</style>
+<script language="javascript">
+
+
+function callbackgetentryinfo(data)
+{	
+	var name = data.name;
+//	alert(name);
+	var content = data.content;
+//	alert(content);
+//	var result = data.name;
+//	alert(result);
+	$("#name").html(name);
+	$("#content").html(content);	
+//	alert("end");
+	$('.cc').fadeIn('slow');
+}
+function getentryinfo(entryrandkey)
+{
+	//alert("ok");
+	//alert(entryrandkey);
+	var url = 'GetEntryLeafInfo.action';
+	var params = {
+		randkey:entryrandkey,
+	};
+	//alert(entryrandkey);
+	jQuery.post(url, params, callbackgetentryinfo, 'json');
+	//alert(entryrandkey);
+}
+</script>
+
+<script language="javascript">
+$(function(){
+	var _move=false;//移动标记
+	var _x,_y;//鼠标离控件左上角的相对位置
+//	$('#t').click(
+//		function(){
+//		$('.cc').fadeIn('slow');
+//			});
+	$('.cc span').click(function(){
+			$('.cc').hide('fast');
+			})
+	$('.cc').mousedown(function(e){
+		_move=true;
+        _x=e.pageX-parseInt($(".cc").css("left"));
+        _y=e.pageY-parseInt($(".cc").css("top"));
+        $(".cc").fadeTo(20, 0.5).css('cursor','move');//点击后开始拖动并透明显示
+		});
+	 $('.cc').mousemove(function(e){
+        if(_move){
+            var x=e.pageX-_x;//移动时根据鼠标位置计算控件左上角的绝对位置
+            var y=e.pageY-_y;
+            $(".cc").css({top:y,left:x});//控件新位置
+        }
+    }).mouseup(function(){
+    _move=false;
+    $(".cc").fadeTo("fast", 1).css('cursor','auto');//松开鼠标后停止移动并恢复成不透明
+  });
+	});
+</script>
+
+<title>一个很好的功能</title>
+</head>
+<body>
+<input id="t" name="1" type="button" value="hello" onclick="getentryinfo('15121')"/>
+<div class="cc" ><div id="name">hello</div><span>X</span>
+<div id="content" name="content">what</div>
+</div>
+<br />
+
+</body>
+</html>

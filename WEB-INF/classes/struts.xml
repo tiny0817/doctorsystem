@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?><!-- XML声明 -->
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+ "http://struts.apache.org/dtds/struts-2.1.dtd"><!-- 指定Struts 2配置文件的DTD信息 -->
+<struts><!-- 根节点 -->
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<package name="struts2" namespace="/" extends="struts-default">
+	
+
+		<action name="LoginIn" class="yl.hzc.action.ManagerAction" method="loginIn">
+ 			<result name="success" type="redirect">/main.jsp</result>
+ 			<result name="input">/login.jsp</result>
+ 			<result name="error">/login.jsp</result>
+ 		</action>
+ 	 	
+ 	 	<action name="ModifyPassword" class="yl.hzc.action.ManagerAction" method="modifyPassword">
+ 			<result name="success">/updatepassword.jsp</result>
+ 			<result name="input">/updatepassword.jsp</result>
+ 			<result name="error">/updatepassword.jsp</result>
+ 		</action>
+ 	 	
+ 	 	<action name="Loginout" class="yl.hzc.action.ManagerAction" method="logout">
+ 			<result name="success">/login.jsp</result>
+ 			<result name="input">/login.jsp</result>
+ 			<result name="error">/error.jsp</result>
+ 		</action>
+ 	 	
+ 	 	
+ 	 	<action name="AddPatient" class="yl.hzc.action.PatientAction" method="addPatient">
+ 			<result name="success">/patient/addpatient.jsp</result>
+ 			<result name="input">/patient/addpatient.jsp</result>
+ 			<result name="error">/patient/addpatient.jsp</result>
+ 		</action>
+ 		
+ 		<action name="GetJCYStruct" class="yl.hzc.action.JCYAction" method="getStructTree">
+			<result name="success">/jcy/secondpage.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+ 		
+ 		<action name="GetWAHLStruct" class="yl.hzc.action.WAHLAction" method="getStructTree">
+			<result name="success">/wahl/secondpage.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+ 		
+ 		
+ 		<action name="GetWASSStruct" class="yl.hzc.action.WASSAction" method="getStructTree">
+			<result name="success_1">/wass/secondpage_1.jsp</result>
+			<result name="success_2">/wass/secondpage_2.jsp</result>
+			<result name="input">/error.jsp</result>
+		</action>
+ 		
+ 		
+ 		<action name="VerifyPatient" class="yl.hzc.action.PatientAction" method="verifyPatient">
+			<result name="success">/jcy/mainpage.jsp</result>
+			<result name="input">/jcy/mainpage.jsp</result>
+		</action>
+		
+		
+ 		<action name="VerifyPatientWAHL" class="yl.hzc.action.PatientAction" method="verifyPatient">
+			<result name="success">/wahl/mainpage.jsp</result>
+			<result name="input">/wahl/mainpage.jsp</result>
+		</action>
+		
+		<action name="VerifyPatientWASS" class="yl.hzc.action.PatientAction" method="verifyPatient">
+			<result name="success">/wass/mainpage.jsp</result>
+			<result name="input">/wass/mainpage.jsp</result>
+		</action>
+ 		
+ 		<action name="QueryPatientRecordAction" class="yl.hzc.action.PatientRecordAction" method="queryPatientRecord">
+			<result name="success">/patient/listpatient.jsp</result>
+			<result name="input">/patient/listpatient.jsp</result>
+			<result name="error">/patient/listpatient.jsp</result>
+		</action>
+		
+ 		<action name="QueryDiseaseDesAction" class="yl.hzc.action.EntryStructAction" method="queryDiseaseEntrys">
+			<result name="success">/znwz/listwz.jsp</result>
+			<result name="input">/znwz/listwz.jsp</result>
+			<result name="error">/znwz/listwz.jsp</result>
+		</action>
+ 		
+	</package>
+	
+	 
+	<package name="ajax" extends="json-default">
+      
+        <action name="AddPatientRecord"  class="yl.hzc.action.PatientRecordAction" method="addPatientRecord">
+            <result type="json"></result>
+        </action>
+  		
+  		
+  		<action name="GetEntryLeafInfo"  class="yl.hzc.action.EntryStructAction" method="GetEntryLeafInfo">
+            <result type="json"></result>
+        </action>
+	</package> 
+	      	
+	
+</struts>

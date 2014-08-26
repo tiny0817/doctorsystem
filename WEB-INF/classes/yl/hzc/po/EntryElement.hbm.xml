@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping 
+			PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="yl.hzc.po.EntryElement" table="tbl_entryinfo"><!-- 每个class对应一个持久化对象 -->
+		<id name="id" column="id"><!-- id元素用来定义主键标识,并指定主键生成策略 -->
+			<generator class="native"></generator>
+		</id>
+		<property name="randkey" column="randkey"></property>
+		<property name="name" column="name"></property>
+		<property name="content" column="content"></property>
+	</class>	
+</hibernate-mapping>
